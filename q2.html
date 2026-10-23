@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Interactive Text Changer</title>
+</head>
+<body>
+  <h1>Smart Number Validator</h1>
+  <label for="userInput">Enter a number:</label>
+  <input type="text" id="userInput" placeholder="Enter a number">
+  <button id="checkBtn" type="button">Check</button>
+  <p id="result" role="status" aria-live="polite"></p>
+
+  <script>
+    const userInput = document.getElementById('userInput');
+    const checkBtn = document.getElementById('checkBtn');
+    const result = document.getElementById('result');
+
+    function validateNumber() {
+      const value = userInput.value.trim();
+      if (value === '') {
+        result.textContent = 'Please enter a number.';
+        return;
+      }
+      const number = Number(value);
+      if (isNaN(number)) {
+        result.textContent = 'Invalid input. Please enter a valid number.';
+      } else if (number < 10) {
+        result.textContent = 'The number is lower than 10.';
+      } else if (number > 10) {
+        result.textContent = `The number is higher than 10.`;
+      } else if (number == 10) {
+        result.textContent = 'The number is equal to 10.';
+      }
+    }
+
+    checkBtn.addEventListener('click', validateNumber);
+    </script>
+</body>
+</html>
